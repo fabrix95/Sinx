@@ -114,7 +114,7 @@ echo <<<EOM
 EOM;
 
 // popolo la tabella delle ricevute
-$Query = "SELECT * FROM tb_ricevute WHERE nome = '$row[nome]'";
+$Query = "SELECT * FROM tb_ricevute WHERE (nome = '". addslashes($row[nome]) ."')";
 $rb=mysqli_query($connect, $Query)
 or die("Errore nella query $Query: " . mysqli_error());
 $nome = $row['nome'];
@@ -140,7 +140,7 @@ EOM;
 
 <?php
 
-$Query = "SELECT * FROM tb_tot_fatture WHERE nome = '$nome'";
+$Query = "SELECT * FROM tb_tot_fatture WHERE (nome = '". addslashes($row[nome]) ."')";
 
 $rs=mysqli_query($connect, $Query)
 or die('' . mysqli_error());
